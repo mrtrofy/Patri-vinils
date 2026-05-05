@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patri-Vinils | DDRG Systems</title>
+    
+    <meta name="theme-color" content="#020617">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Patri-Vinils">
+    <link rel="manifest" id="pwa-manifest">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #020617; }
+        .cyber-card { background: #0f172a; border: 1px solid #1e293b; }
+        input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="text-slate-200 min-h-screen p-4 md:p-8">
+
+    <div class="max-w-6xl mx-auto">
+        <header class="flex justify-between items-center mb-8 bg-slate-900/50 p-6 rounded-3xl border border-blue-500/20 shadow-2xl">
+            <div>
+                <h1 class="text-4xl font-black tracking-tighter text-blue-500">PATRI-<span class="text-white">VINILS</span></h1>
+                <p class="text-slate-500 text-xs uppercase tracking-[0.2em] font-bold">DDRG High-Precision Calc</p>
+            </div>
+            <button id="installApp" class="hidden bg-blue-600 px-4 py-2 rounded-full text-xs font-bold hover:bg-blue-500 transition-all">
+                INSTALAR APP
+            </button>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <div class="lg:col-span-2 space-y-6">
+                <div class="cyber-card p-8 rounded-[2.5rem] shadow-2xl">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                        <div class="space-y-5">
+                            <h3 class="text-blue-400 font-bold text-xs uppercase tracking-widest flex items-center gap-2">
+                                <i data-lucide="droplet" class="w-4 h-4"></i> Costos Insumos
+                            </h3>
+                            <div class="space-y-4">
+                                <div class="relative">
+                                    <label class="text-[10px] text-slate-500 font-bold uppercase ml-1">Precio Hoja ($)</label>
+                                    <input type="number" id="hoja" class="w-full bg-slate-950 border border-slate-800 rounded-2xl p-4 focus:ring-2 focus:ring-blue-600 outline-none" placeholder="0.00">
+                                </div>
+                                <div class="relative">
+                                    <label class="text-[10px] text-slate-500 font-bold uppercase ml-1">Tinta ($)</label>
+                                    <input type="number" id="tinta" class="w-full bg-slate-950 border border-slate-800 rounded-2xl p-4 focus:ring-2 focus:ring-blue-600 outline-none" placeholder="0.00">
+                                </div>
+                                <div class="relative">
+                                    <label class="text-[10px] text-slate-500 font-bold uppercase ml-1">Cinta Transfer ($)</label>
+                                    <input type="number" id="cinta" class="w-full bg-slate-950 border border-slate-800 rounded-2xl p-4 focus:ring-2 focus:ring-blue-600 outline-none" placeholder="0.00">
+                                </div>
+                                <div class="relative">
+                                    <label class="text-[10px] text-slate-500 font-bold uppercase ml-1">Luz / Energía ($)</label>
+                                    <input type="number" id="luz" class="w-full bg-slate-950 border border-slate-800 rounded-2xl p-4 focus:ring-2 focus:ring-blue-600 outline-none" placeholder="0.00">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-5">
+                            <h3 class="text-purple-400 font-bold text-xs uppercase tracking-widest flex items-center gap-2">
+                                <i data-lucide="expand" class="w-4 h-4"></i> Medidas
+                            </h3>
+                            <div class="space-y-4">
+                                <div class="flex gap-4">
+                                    <div class="w-1/2">
+                                        <label class="text-[10px] text-slate-500 font-bold uppercase ml-1">Ancho (cm)</label>
+                                        <input type="number" id="ancho" class="w-full bg-slate-950 border border-slate-800 rounded-2xl p-4 focus:ring-2 focus:ring-purple-600 outline-none" placeholder="21">
+                                    </div>
+                                    <div class="w-1/2">
+                                        <label class="text-[10px] text-slate-500 font-bold uppercase ml-1">Alto (cm)</label>
+                                        <input type="number" id="alto" class="w-full bg-slate-950 border border-slate-800 rounded-2xl p-4 focus:ring-2 focus:ring-purple-600 outline-none" placeholder="29.7">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="text-[10px] text-slate-500 font-bold uppercase ml-1">Servicio Diseño ($)</label>
+                                    <input type="number" id="diseno" class="w-full bg-slate-950 border border-slate-800 rounded-2xl p-4 focus:ring-2 focus:ring-purple-600 outline-none" placeholder="5.00">
+                                </div>
+                                <div class="bg-blue-500/5 p-4 rounded-2xl border border-blue-500/10">
+                                    <p class="text-[10px] text-blue-300 font-medium">INFO: La mano de obra se calcula al 80% del valor del material escalado.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button onclick="calcularTotal()" class="w-full mt-10 bg-blue-600 hover:bg-blue-500 text-white font-black py-5 rounded-2xl transition-all shadow-lg active:scale-95 uppercase tracking-widest">
+                        Calcular Precio Final
+                    </button>
+                </div>
+
+                <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-[2.5rem] p-10 text-center shadow-xl">
+                    <span class="text-emerald-500 font-bold text-xs uppercase tracking-widest mb-2 block">Total a Cobrar</span>
+                    <div class="text-7xl font-black text-white" id="display-total">$ 0.00</div>
+                    <button onclick="guardarRegistro()" class="mt-6 flex items-center gap-2 mx-auto text-emerald-500 hover:text-emerald-400 font-bold text-xs uppercase">
+                        <i data-lucide="save" class="w-4 h-4"></i> Guardar en Historial
+                    </button>
+                </div>
+            </div>
+
+            <div class="lg:col-span-1">
+                <div class="cyber-card rounded-[2.5rem] h-full flex flex-col shadow-2xl">
+                    <div class="p-8 border-b border-slate-800 flex justify-between items-center bg-slate-900/30">
+                        <h3 class="font-black text-xs uppercase tracking-widest flex items-center gap-2">
+                            <i data-lucide="history" class="w-4 h-4 text-blue-500"></i> Historial
+                        </h3>
+                        <button onclick="borrarHistorial()" class="text-slate-600 hover:text-red-500">
+                            <i data-lucide="trash-2" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                    <div id="lista" class="flex-1 overflow-y-auto p-6 space-y-4 max-h-[600px] scrollbar-hide"></div>
+                    <div class="p-6 text-center border-t border-slate-800">
+                        <p class="text-[8px] text-slate-600 uppercase font-bold tracking-widest italic">Dev by DDRG Systems 2026</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 1. CONFIGURACIÓN DEL MANIFIESTO DINÁMICO (Para que sea PWA)
+        const manifest = {
+            "name": "Patri-Vinils",
+            "short_name": "Patri-Vinils",
+            "start_url": ".",
+            "display": "standalone",
+            "background_color": "#020617",
+            "theme_color": "#020617",
+            "icons": [
+                { "src": "https://cdn-icons-png.flaticon.com/512/3523/3523063.png", "sizes": "512x512", "type": "image/png" }
+            ]
+        };
+        const stringManifest = JSON.stringify(manifest);
+        const blob = new Blob([stringManifest], {type: 'application/json'});
+        const manifestURL = URL.createObjectURL(blob);
+        document.querySelector('#pwa-manifest').setAttribute('href', manifestURL);
+
+        // 2. LÓGICA DE ICONOS Y FECHA
+        lucide.createIcons();
+
+        // 3. LÓGICA DE NEGOCIO
+        let totalGlobal = 0;
+        let db = JSON.parse(localStorage.getItem('patri_vinils_db')) || [];
+
+        function calcularTotal() {
+            const h = parseFloat(document.getElementById('hoja').value) || 0;
+            const t = parseFloat(document.getElementById('tinta').value) || 0;
+            const c = parseFloat(document.getElementById('cinta').value) || 0;
+            const l = parseFloat(document.getElementById('luz').value) || 0;
+            const anc = parseFloat(document.getElementById('ancho').value) || 0;
+            const alt = parseFloat(document.getElementById('alto').value) || 0;
+            const d = parseFloat(document.getElementById('diseno').value) || 0;
+
+            const costoBase = h + t + c + l;
+            const areaA4 = 623.7;
+            let costoEscalado = (anc > 0 && alt > 0) ? costoBase * ((anc * alt) / areaA4) : costoBase;
+
+            totalGlobal = (costoEscalado * 1.80) + d;
+            document.getElementById('display-total').innerText = `$ ${totalGlobal.toFixed(2)}`;
+        }
+
+        function guardarRegistro() {
+            if (totalGlobal <= 0) return;
+            const entry = {
+                id: Date.now(),
+                total: totalGlobal.toFixed(2),
+                fecha: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}),
+                medida: (document.getElementById('ancho').value) ? `${document.getElementById('ancho').value}x${document.getElementById('alto').value}` : 'A4'
+            };
+            db.unshift(entry);
+            localStorage.setItem('patri_vinils_db', JSON.stringify(db));
+            renderList();
+        }
+
+        function renderList() {
+            const lista = document.getElementById('lista');
+            lista.innerHTML = db.map(item => `
+                <div class="bg-slate-950 border border-slate-800 p-4 rounded-2xl flex justify-between items-center">
+                    <div>
+                        <p class="text-[9px] text-blue-500 font-bold">${item.fecha}</p>
+                        <p class="text-xs font-bold text-slate-300">VINIL ${item.medida}</p>
+                    </div>
+                    <div class="text-emerald-400 font-black text-lg">$${item.total}</div>
+                </div>
+            `).join('') || '<p class="text-center text-slate-700 text-xs mt-10">Sin historial</p>';
+        }
+
+        function borrarHistorial() {
+            if(confirm("¿Vaciar registro?")) { db = []; localStorage.removeItem('patri_vinils_db'); renderList(); }
+        }
+
+        // 4. SERVICE WORKER PARA MODO OFFLINE (Auto-registrado)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('data:text/javascript;base64,' + btoa(`
+                    self.addEventListener('fetch', (e) => {});
+                `));
+            });
+        }
+
+        // 5. MANEJO DE INSTALACIÓN
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            document.getElementById('installApp').classList.remove('hidden');
+        });
+
+        document.getElementById('installApp').addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                if (outcome === 'accepted') {
+                    document.getElementById('installApp').classList.add('hidden');
+                }
+                deferredPrompt = null;
+            }
+        });
+
+        renderList();
+    </script>
+</body>
+</html>
