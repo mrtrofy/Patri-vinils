@@ -38,24 +38,25 @@
             <div class="lg:col-span-2 space-y-6">
                 <div class="cyber-card p-8 rounded-[2.5rem] shadow-2xl">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                        
                         <div class="space-y-5">
                             <h3 class="text-blue-400 font-bold text-xs uppercase tracking-widest flex items-center gap-2">
-                                <i data-lucide="droplet" class="w-4 h-4"></i> Costos Insumos
+                                <i data-lucide="droplet" class="w-4 h-4"></i> Costos Insumos (A4)
                             </h3>
                             <div class="space-y-4">
-                                <div class="relative">
+                                <div>
                                     <label class="text-[10px] text-slate-500 font-bold uppercase ml-1">Precio Hoja ($)</label>
                                     <input type="number" id="hoja" class="w-full bg-slate-950 border border-slate-800 rounded-2xl p-4 focus:ring-2 focus:ring-blue-600 outline-none" placeholder="0.00">
                                 </div>
-                                <div class="relative">
+                                <div>
                                     <label class="text-[10px] text-slate-500 font-bold uppercase ml-1">Tinta ($)</label>
                                     <input type="number" id="tinta" class="w-full bg-slate-950 border border-slate-800 rounded-2xl p-4 focus:ring-2 focus:ring-blue-600 outline-none" placeholder="0.00">
                                 </div>
-                                <div class="relative">
+                                <div>
                                     <label class="text-[10px] text-slate-500 font-bold uppercase ml-1">Cinta Transfer ($)</label>
                                     <input type="number" id="cinta" class="w-full bg-slate-950 border border-slate-800 rounded-2xl p-4 focus:ring-2 focus:ring-blue-600 outline-none" placeholder="0.00">
                                 </div>
-                                <div class="relative">
+                                <div>
                                     <label class="text-[10px] text-slate-500 font-bold uppercase ml-1">Luz / Energía ($)</label>
                                     <input type="number" id="luz" class="w-full bg-slate-950 border border-slate-800 rounded-2xl p-4 focus:ring-2 focus:ring-blue-600 outline-none" placeholder="0.00">
                                 </div>
@@ -64,9 +65,18 @@
 
                         <div class="space-y-5">
                             <h3 class="text-purple-400 font-bold text-xs uppercase tracking-widest flex items-center gap-2">
-                                <i data-lucide="expand" class="w-4 h-4"></i> Medidas
+                                <i data-lucide="plus-circle" class="w-4 h-4"></i> Extras y Dimensiones
                             </h3>
                             <div class="space-y-4">
+                                <div>
+                                    <label class="text-[10px] text-slate-500 font-bold uppercase ml-1">Tipo de Insumo (Nombre)</label>
+                                    <input type="text" id="tipo_insumo" class="w-full bg-slate-950 border border-slate-800 rounded-2xl p-4 focus:ring-2 focus:ring-purple-600 outline-none" placeholder="Ej: Pega, Laminado...">
+                                </div>
+                                <div>
+                                    <label class="text-[10px] text-slate-500 font-bold uppercase ml-1">Costo Insumo por Unidad ($)</label>
+                                    <input type="number" id="costo_unidad" class="w-full bg-slate-950 border border-slate-800 rounded-2xl p-4 focus:ring-2 focus:ring-purple-600 outline-none" placeholder="0.00">
+                                </div>
+                                
                                 <div class="flex gap-4">
                                     <div class="w-1/2">
                                         <label class="text-[10px] text-slate-500 font-bold uppercase ml-1">Ancho (cm)</label>
@@ -78,32 +88,29 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <label class="text-[10px] text-slate-500 font-bold uppercase ml-1">Servicio Diseño ($)</label>
+                                    <label class="text-[10px] text-slate-500 font-bold uppercase ml-1">Precio Diseño ($)</label>
                                     <input type="number" id="diseno" class="w-full bg-slate-950 border border-slate-800 rounded-2xl p-4 focus:ring-2 focus:ring-purple-600 outline-none" placeholder="5.00">
-                                </div>
-                                <div class="bg-blue-500/5 p-4 rounded-2xl border border-blue-500/10">
-                                    <p class="text-[10px] text-blue-300 font-medium">INFO: La mano de obra se calcula al 80% del valor del material escalado.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <button onclick="calcularTotal()" class="w-full mt-10 bg-blue-600 hover:bg-blue-500 text-white font-black py-5 rounded-2xl transition-all shadow-lg active:scale-95 uppercase tracking-widest">
-                        Calcular Precio Final
+                        Calcular Cotización
                     </button>
                 </div>
 
                 <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-[2.5rem] p-10 text-center shadow-xl">
-                    <span class="text-emerald-500 font-bold text-xs uppercase tracking-widest mb-2 block">Total a Cobrar</span>
+                    <span class="text-emerald-500 font-bold text-xs uppercase tracking-widest mb-2 block">Total Sugerido</span>
                     <div class="text-7xl font-black text-white" id="display-total">$ 0.00</div>
                     <button onclick="guardarRegistro()" class="mt-6 flex items-center gap-2 mx-auto text-emerald-500 hover:text-emerald-400 font-bold text-xs uppercase">
-                        <i data-lucide="save" class="w-4 h-4"></i> Guardar en Historial
+                        <i data-lucide="save" class="w-4 h-4"></i> Registrar Venta
                     </button>
                 </div>
             </div>
 
             <div class="lg:col-span-1">
-                <div class="cyber-card rounded-[2.5rem] h-full flex flex-col shadow-2xl">
+                <div class="cyber-card rounded-[2.5rem] h-full flex flex-col shadow-2xl overflow-hidden">
                     <div class="p-8 border-b border-slate-800 flex justify-between items-center bg-slate-900/30">
                         <h3 class="font-black text-xs uppercase tracking-widest flex items-center gap-2">
                             <i data-lucide="history" class="w-4 h-4 text-blue-500"></i> Historial
@@ -113,16 +120,13 @@
                         </button>
                     </div>
                     <div id="lista" class="flex-1 overflow-y-auto p-6 space-y-4 max-h-[600px] scrollbar-hide"></div>
-                    <div class="p-6 text-center border-t border-slate-800">
-                        <p class="text-[8px] text-slate-600 uppercase font-bold tracking-widest italic">Dev by DDRG Systems 2026</p>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // 1. CONFIGURACIÓN DEL MANIFIESTO DINÁMICO (Para que sea PWA)
+        // PWA Manifest Dinámico
         const manifest = {
             "name": "Patri-Vinils",
             "short_name": "Patri-Vinils",
@@ -130,46 +134,50 @@
             "display": "standalone",
             "background_color": "#020617",
             "theme_color": "#020617",
-            "icons": [
-                { "src": "https://cdn-icons-png.flaticon.com/512/3523/3523063.png", "sizes": "512x512", "type": "image/png" }
-            ]
+            "icons": [{ "src": "https://cdn-icons-png.flaticon.com/512/3523/3523063.png", "sizes": "512x512", "type": "image/png" }]
         };
-        const stringManifest = JSON.stringify(manifest);
-        const blob = new Blob([stringManifest], {type: 'application/json'});
-        const manifestURL = URL.createObjectURL(blob);
-        document.querySelector('#pwa-manifest').setAttribute('href', manifestURL);
+        const blob = new Blob([JSON.stringify(manifest)], {type: 'application/json'});
+        document.querySelector('#pwa-manifest').setAttribute('href', URL.createObjectURL(blob));
 
-        // 2. LÓGICA DE ICONOS Y FECHA
         lucide.createIcons();
 
-        // 3. LÓGICA DE NEGOCIO
         let totalGlobal = 0;
         let db = JSON.parse(localStorage.getItem('patri_vinils_db')) || [];
 
         function calcularTotal() {
+            // Insumos fijos
             const h = parseFloat(document.getElementById('hoja').value) || 0;
             const t = parseFloat(document.getElementById('tinta').value) || 0;
             const c = parseFloat(document.getElementById('cinta').value) || 0;
             const l = parseFloat(document.getElementById('luz').value) || 0;
+            
+            // Insumo extra solicitado
+            const cUnidad = parseFloat(document.getElementById('costo_unidad').value) || 0;
+            
             const anc = parseFloat(document.getElementById('ancho').value) || 0;
             const alt = parseFloat(document.getElementById('alto').value) || 0;
             const d = parseFloat(document.getElementById('diseno').value) || 0;
 
-            const costoBase = h + t + c + l;
+            // Sumamos el costo por unidad al costo base de materiales
+            const costoBaseTotal = h + t + c + l + cUnidad;
+            
             const areaA4 = 623.7;
-            let costoEscalado = (anc > 0 && alt > 0) ? costoBase * ((anc * alt) / areaA4) : costoBase;
+            let costoEscalado = (anc > 0 && alt > 0) ? costoBaseTotal * ((anc * alt) / areaA4) : costoBaseTotal;
 
+            // Aplicamos mano de obra 80% y sumamos diseño
             totalGlobal = (costoEscalado * 1.80) + d;
             document.getElementById('display-total').innerText = `$ ${totalGlobal.toFixed(2)}`;
         }
 
         function guardarRegistro() {
             if (totalGlobal <= 0) return;
+            const tInsumo = document.getElementById('tipo_insumo').value || "General";
             const entry = {
                 id: Date.now(),
                 total: totalGlobal.toFixed(2),
                 fecha: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}),
-                medida: (document.getElementById('ancho').value) ? `${document.getElementById('ancho').value}x${document.getElementById('alto').value}` : 'A4'
+                medida: (document.getElementById('ancho').value) ? `${document.getElementById('ancho').value}x${document.getElementById('alto').value}` : 'A4',
+                extra: tInsumo
             };
             db.unshift(entry);
             localStorage.setItem('patri_vinils_db', JSON.stringify(db));
@@ -179,47 +187,26 @@
         function renderList() {
             const lista = document.getElementById('lista');
             lista.innerHTML = db.map(item => `
-                <div class="bg-slate-950 border border-slate-800 p-4 rounded-2xl flex justify-between items-center">
+                <div class="bg-slate-950 border border-slate-800 p-4 rounded-2xl flex justify-between items-center group hover:border-blue-500/30 transition-all">
                     <div>
-                        <p class="text-[9px] text-blue-500 font-bold">${item.fecha}</p>
-                        <p class="text-xs font-bold text-slate-300">VINIL ${item.medida}</p>
+                        <p class="text-[9px] text-blue-500 font-black tracking-tighter">${item.fecha} • ${item.extra}</p>
+                        <p class="text-xs font-bold text-slate-300 uppercase tracking-tighter">Vinil ${item.medida}</p>
                     </div>
                     <div class="text-emerald-400 font-black text-lg">$${item.total}</div>
                 </div>
-            `).join('') || '<p class="text-center text-slate-700 text-xs mt-10">Sin historial</p>';
+            `).join('') || '<p class="text-center text-slate-700 text-xs mt-10 uppercase font-bold tracking-widest">Sin ventas</p>';
         }
 
         function borrarHistorial() {
             if(confirm("¿Vaciar registro?")) { db = []; localStorage.removeItem('patri_vinils_db'); renderList(); }
         }
 
-        // 4. SERVICE WORKER PARA MODO OFFLINE (Auto-registrado)
+        // Service Worker Offline
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('data:text/javascript;base64,' + btoa(`
-                    self.addEventListener('fetch', (e) => {});
-                `));
+                navigator.serviceWorker.register('data:text/javascript;base64,' + btoa(`self.addEventListener('fetch', (e) => {});`));
             });
         }
-
-        // 5. MANEJO DE INSTALACIÓN
-        let deferredPrompt;
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            document.getElementById('installApp').classList.remove('hidden');
-        });
-
-        document.getElementById('installApp').addEventListener('click', async () => {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                const { outcome } = await deferredPrompt.userChoice;
-                if (outcome === 'accepted') {
-                    document.getElementById('installApp').classList.add('hidden');
-                }
-                deferredPrompt = null;
-            }
-        });
 
         renderList();
     </script>
